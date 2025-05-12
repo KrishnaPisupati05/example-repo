@@ -7,10 +7,6 @@ on:
         description: "Name of the Azure Web App"
         required: true
         type: string
-      resource-group:
-        description: "Name of the Azure Resource Group"
-        required: true
-        type: string
       source-slot:
         description: "Name of the source deployment slot (e.g., staging)"
         required: true
@@ -20,7 +16,7 @@ on:
         required: true
         type: string
     secrets:
-      AZURE_PUBLISH_PROFILE:
+      AZURE_PUBLISH_PROFILE_1:
         description: "Azure publish profile for deployment"
         required: true
 
