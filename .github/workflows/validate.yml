@@ -1,0 +1,34 @@
+name: Validate Code
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: "Version of Node.js to use"
+        required: true
+        type: string
+      install-command:
+        description: "Command to install dependencies"
+        required: true
+        type: string
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install dependencies
+        run: ${{ inputs.install-command }}
+
+      - name: Run Lint
+        run: eslint .  # Run lint to validate code
+
+      - name: Run Tests
+        run: npm test  # Run tests

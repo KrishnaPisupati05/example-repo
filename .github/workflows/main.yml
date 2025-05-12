@@ -1,15 +1,23 @@
-# .github/workflows/main.yml
-name: Trigger Build Workflow
+name: Validate and Build Workflow
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to the 'main' branch
 
 jobs:
-  call-build:
+  # 1. Validate job: Lint and Test the code
+  validate:
+    uses: ./.github/workflows/validate.yml
+    with:
+      node-version: '18'  # Specify Node.js version
+      install-command: 'npm install'  # Command to install dependencies
+
+  # 2. Build job: Only runs after validate is successful
+  build:
+    needs: validate  # Ensure build runs only after validate job passes
     uses: ./.github/workflows/build.yml
     with:
-      zip-dir: my-code
-      artifact-path: my-code.zip
-      artifact-name: my-code-artifact
+      zip-dir: my-code  # Specify the directory to zip
+      artifact-path: my-code.zip  # Path to save the zip
+      artifact-name: my-code-artifact  # Artifact name
