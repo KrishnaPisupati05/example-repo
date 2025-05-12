@@ -1,0 +1,15 @@
+# .github/workflows/main.yml
+name: Trigger Build Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-build:
+    uses: ./.github/workflows/build.yml
+    with:
+      zip-dir: my-code
+      artifact-path: my-code.zip
+      artifact-name: my-code-artifact
