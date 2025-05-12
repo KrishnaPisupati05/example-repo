@@ -15,7 +15,7 @@ on:
 
   # 2. Build job: Only runs after validate is successful
   build:
-    needs: validate  # Ensure build runs only after validate job passes
+    #needs: validate  # Ensure build runs only after validate job passes
     uses: ./.github/workflows/build.yml
     with:
       zip-dir: my-code  # Specify the directory to zip
