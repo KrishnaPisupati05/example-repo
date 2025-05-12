@@ -29,6 +29,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-code-artifact 
+
+    
+      - name: List directory contents
+        run: ls -l
+
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
         with:
