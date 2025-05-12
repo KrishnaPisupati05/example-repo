@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Set up Azure CLI
-        uses: azure/setup-azurecli@v1.0.0
+        uses: azure/setup-azurecli@v3
       
 
       - name: Login to Azure using Publish Profile
