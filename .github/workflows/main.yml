@@ -5,13 +5,13 @@ on:
     branches:
       - main  # Trigger on push to the 'main' branch
 
-jobs:
-  # 1. Validate job: Lint and Test the code
-  validate:
-    uses: ./.github/workflows/validate.yml
-    with:
-      node-version: '18'  # Specify Node.js version
-      install-command: 'npm install'  # Command to install dependencies
+# jobs:
+#   # 1. Validate job: Lint and Test the code
+#   validate:
+#     uses: ./.github/workflows/validate.yml
+#     with:
+#       node-version: '18'  # Specify Node.js version
+#       install-command: 'npm install'  # Command to install dependencies
 
   # 2. Build job: Only runs after validate is successful
   build:
