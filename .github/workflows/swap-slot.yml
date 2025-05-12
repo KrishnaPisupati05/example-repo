@@ -29,10 +29,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Azure CLI
-        uses: azure/setup-azurecli@v3
-      
-
       - name: Login to Azure using Publish Profile
         uses: azure/login@v1
         with:
