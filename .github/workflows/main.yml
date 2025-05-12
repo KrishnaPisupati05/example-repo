@@ -17,7 +17,7 @@ jobs:
     needs: build  # Ensure deploy job runs only after the build job succeeds
     uses: ./.github/workflows/deploy.yml
     with:
-      azure_webapp_name: my-webapp-000
+      azure_webapp_name: my-webapp-108
       package_path: my-code.zip
       slot_name: staging
     secrets:
