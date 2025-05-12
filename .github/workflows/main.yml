@@ -5,19 +5,12 @@ on:
     branches:
       - main  # Trigger on push to the 'main' branch
 
- jobs:
-#   # 1. Validate job: Lint and Test the code
-#   validate:
-#     uses: ./.github/workflows/validate.yml
-#     with:
-#       node-version: '18'  # Specify Node.js version
-#       install-command: 'npm install'  # Command to install dependencies
-
-  # 2. Build job: Only runs after validate is successful
+jobs:
   build:
-    #needs: validate  # Ensure build runs only after validate job passes
     uses: ./.github/workflows/build.yml
     with:
-      zip-dir: my-code  # Specify the directory to zip
-      artifact-path: my-code.zip  # Path to save the zip
-      artifact-name: my-code-artifact  # Artifact name
+      node-version: '18'
+      install-command: 'npm install'
+      zip-dir: my-code         # Folder in your repo to be zipped
+      artifact-path: my-code.zip
+      artifact-name: my-code-artifact
