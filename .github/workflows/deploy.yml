@@ -1,0 +1,38 @@
+name: Deploy App to Azure App Service
+
+on:
+  workflow_call:
+    inputs:
+      azure_webapp_name:
+        description: "Name of the Azure Web App where the app is deployed"
+        required: true
+        type: string
+      package_path:
+        description: "Path to the deployment package (e.g., my-code.zip)"
+        required: true
+        type: string
+      slot_name:
+        description: "Name of the deployment slot (e.g., production or staging)"
+        required: false
+        type: string
+
+    secrets:
+      AZURE_PUBLISH_PROFILE:
+        description: "Azure publish profile for deployment"
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ inputs.azure_webapp_name }}
+          package: ${{ inputs.package_path }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          slot-name: ${{ inputs.slot_name }}
