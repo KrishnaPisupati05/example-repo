@@ -1,17 +1,18 @@
 {
-    "name": "your-project-name",
+    "name": "simple nodejs",
     "version": "1.0.0",
-    "description": "A simple project to validate and build code",
-    "main": "index.js",  
+    "description": "a sample project",
+    "main": "index.js",
     "scripts": {
-      "lint": "eslint .", 
-      "test": "echo \"No test specified\" && exit 0"  
+        "start": "node index.js",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.26.0",
+        "eslint": "^9.26.0",
+        "globals": "^16.1.0"
     },
     "dependencies": {
-      "eslint": "^8.0.0" 
-    },
-    "devDependencies": {},
-    "author": "Your Name",
-    "license": "ISC"
-  }
-  
+        "express": "^5.1.0"
+    }
+}
