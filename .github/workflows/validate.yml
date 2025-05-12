@@ -26,9 +26,12 @@ jobs:
 
       - name: Install dependencies
         run: ${{ inputs.install-command }}
+        working-directory: ./my-code
 
       - name: Run Lint
         run: eslint .  # Run lint to validate code
+        working-directory: ./my-code
 
       - name: Run Tests
         run: npm test  # Run tests
+        working-directory: ./my-code
