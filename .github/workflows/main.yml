@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Trigger on push to the 'main' branch
 
-# jobs:
+ jobs:
 #   # 1. Validate job: Lint and Test the code
 #   validate:
 #     uses: ./.github/workflows/validate.yml
