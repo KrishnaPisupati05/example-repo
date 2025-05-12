@@ -26,10 +26,10 @@ jobs:
 
   swap:
     needs: deploy  
-    uses: ./.github/workflows/swap-slot.yml  
+    uses: ./.github/workflows/swap-slot.yml 
     with:
-      azure_webapp_name: my-webapp-108  
-      slot_name: staging   
-      target_slot: production
+      app-name: my-webapp-108
+      source-slot: staging          
+      target-slot: production
     secrets:
-      AZURE_PUBLISH_PROFILE: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}  
+      AZURE_PUBLISH_PROFILE_1: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}

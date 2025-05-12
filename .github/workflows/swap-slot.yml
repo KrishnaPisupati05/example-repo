@@ -28,7 +28,7 @@ jobs:
       - name: Swap deployment slots with publish profile
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ inputs.app-name }}
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}
-          slot-name: ${{ inputs.source-slot }}
-          target-slot: ${{ inputs.target-slot }}
+          app-name: ${{ inputs.app-name }}              # Azure Web App name
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}  # Publish profile secret
+          slot-name: ${{ inputs.source-slot }}           # Source slot (e.g., staging)
+          target-slot: ${{ inputs.target-slot }}         # Target slot (e.g., production)
