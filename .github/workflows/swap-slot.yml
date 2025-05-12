@@ -1,0 +1,38 @@
+name: Swap Staging to Production with Publish Profile
+
+on:
+  workflow_call:
+    inputs:
+      app-name:
+        description: "Name of the Azure Web App"
+        required: true
+        type: string
+      resource-group:
+        description: "Name of the Azure Resource Group"
+        required: true
+        type: string
+      source-slot:
+        description: "Name of the source deployment slot (e.g., staging)"
+        required: true
+        type: string
+      target-slot:
+        description: "Name of the target deployment slot (e.g., production)"
+        required: true
+        type: string
+    secrets:
+      AZURE_PUBLISH_PROFILE:
+        description: "Azure publish profile for deployment"
+        required: true
+
+jobs:
+  swap-slots:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Swap deployment slots with publish profile
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ inputs.app-name }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}
+          slot-name: ${{ inputs.source-slot }}
+          target-slot: ${{ inputs.target-slot }}
