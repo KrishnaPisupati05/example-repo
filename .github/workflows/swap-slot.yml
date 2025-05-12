@@ -1,18 +1,22 @@
-name: Swap Staging to Production with Publish Profile
+name: Swap Deployment Slots
 
 on:
   workflow_call:
     inputs:
-      app-name:
+      azure_webapp_name:
         description: "Name of the Azure Web App"
         required: true
         type: string
-      source-slot:
-        description: "Name of the source deployment slot (e.g., staging)"
+      resource_group:
+        description: "Resource group name for the Azure Web App"
         required: true
         type: string
-      target-slot:
-        description: "Name of the target deployment slot (e.g., production)"
+      source_slot_name:
+        description: "Source slot name (e.g., staging)"
+        required: true
+        type: string
+      target_slot_name:
+        description: "Target slot name (e.g., production)"
         required: true
         type: string
     secrets:
@@ -21,14 +25,22 @@ on:
         required: true
 
 jobs:
-  swap-slots:
+  swap:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Swap deployment slots with publish profile
-        uses: azure/webapps-deploy@v2
+      - name: Set up Azure CLI
+        uses: azure/setup-azurecli@v1
+
+      - name: Login to Azure using Publish Profile
+        uses: azure/login@v1
         with:
-          app-name: ${{ inputs.app-name }}              # Azure Web App name
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}  # Publish profile secret
-          slot-name: ${{ inputs.source-slot }}           # Source slot (e.g., staging)
-          target-slot: ${{ inputs.target-slot }}         # Target slot (e.g., production)
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}
+
+      - name: Swap Deployment Slots
+        run: |
+          az webapp deployment slot swap \
+            --name ${{ inputs.azure_webapp_name }} \
+            --resource-group ${{ inputs.resource_group }} \
+            --slot ${{ inputs.source_slot_name }} \
+            --target-slot ${{ inputs.target_slot_name }}

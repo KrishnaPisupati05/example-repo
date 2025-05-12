@@ -25,11 +25,12 @@ jobs:
 
 
   swap:
-    needs: deploy  
-    uses: ./.github/workflows/swap-slot.yml 
+    needs: deploy  # Ensure swap job runs only after deploy job succeeds
+    uses: ./.github/workflows/swap-slot.yml  # Path to the swap-slot.yml
     with:
-      app-name: my-webapp-108
-      source-slot: staging          
-      target-slot: production
+      azure_webapp_name: my-webapp-108
+      resource_group: my-rsg
+      source_slot_name: staging
+      target_slot_name: production
     secrets:
       AZURE_PUBLISH_PROFILE_1: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}
