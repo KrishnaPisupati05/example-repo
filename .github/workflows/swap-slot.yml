@@ -29,12 +29,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-      - name: Set up Azure CLI
-        uses: azure/cli-action@v1
-        with:
-          azcliversion: '2.34.0'
-
-      
       - name: Azure Login (Interactive)
         run: |
           az login
