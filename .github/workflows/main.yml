@@ -12,8 +12,8 @@ jobs:
       node-version: '18' 
       install-command: 'npm install'
 
-jobs:
   build:
+    needs: validate
     uses: ./.github/workflows/build.yml
     with:
       zip-dir: my-code        
