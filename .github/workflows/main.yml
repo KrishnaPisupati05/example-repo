@@ -6,6 +6,13 @@ on:
       - main 
 
 jobs:
+  validate:
+    uses: ./.github/workflows/validate.yml
+    with:
+      node-version: '18' 
+      install-command: 'npm install'
+
+jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:

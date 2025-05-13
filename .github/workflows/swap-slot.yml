@@ -19,19 +19,14 @@ on:
         description: "Target slot name (e.g., production)"
         required: true
         type: string
-    secrets:
-      AZURE_PUBLISH_PROFILE_1:
-        description: "Azure publish profile for deployment"
-        required: true
 
 jobs:
   swap:
     runs-on: ubuntu-latest
 
     steps: 
-      - name: Azure Login (Interactive)
-        run: |
-          az login
+      - name: Azure Login
+        uses: azure/login@v1
       
 
       - name: Swap Deployment Slots

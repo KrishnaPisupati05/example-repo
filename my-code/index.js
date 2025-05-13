@@ -1,18 +1,6 @@
-// Import express module
-const express = require('express');
+function sayHello(name) {
+  console.log("Hello, " + name);
+}
+sayHello("World");
 
-// Create an Express app
-const app = express();
-
-// Serve a basic route for testing
-app.get('/', (req, res) => {
-  res.send('Hello, world! Your app is deployed successfully!');
-});
-
-// Set up the port (Azure will provide a dynamic port, or fallback to 8080)
-const port = process.env.PORT || 8080;
-
-// Start the server
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
-});
+//someVar = 'hello';  
