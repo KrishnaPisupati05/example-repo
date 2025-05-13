@@ -32,5 +32,3 @@ jobs:
       resource_group: my-rsg
       source_slot_name: staging
       target_slot_name: production
-    secrets:
-      AZURE_PUBLISH_PROFILE_1: ${{ secrets.AZURE_PUBLISH_PROFILE_1 }}

@@ -28,10 +28,11 @@ jobs:
         run: ${{ inputs.install-command }}
         working-directory: ./my-code
 
-      - name: Run Lint
-        run: eslint .  # Run lint to validate code
+      - name: Run EsLint
+        run:  |
+          npx eslint 'my-code/**/*.js'
         working-directory: ./my-code
 
       - name: Run Tests
-        run: npm test  # Run tests
+        run: npm test 
         working-directory: ./my-code
