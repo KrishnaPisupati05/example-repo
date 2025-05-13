@@ -13,6 +13,7 @@ jobs:
       install-command: 'npm install'
 
   build:
+    needs: validate
     uses: ./.github/workflows/build.yml
     with:
       zip-dir: my-code        
