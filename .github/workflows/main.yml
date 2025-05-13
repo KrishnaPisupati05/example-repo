@@ -12,7 +12,6 @@ jobs:
       node-version: '18' 
       install-command: 'npm install'
 
-jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
