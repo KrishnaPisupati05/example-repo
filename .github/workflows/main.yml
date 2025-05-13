@@ -3,18 +3,18 @@ name: Validate and Build Workflow
 on:
   push:
     branches:
-      - main  # Trigger on push to the 'main' branch
+      - main 
 
 jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      zip-dir: my-code         # Folder in your repo to be zipped
+      zip-dir: my-code        
       artifact-path: my-code.zip
       artifact-name: my-code-artifact
 
   deploy:
-    needs: build  # Ensure deploy job runs only after the build job succeeds
+    needs: build  
     uses: ./.github/workflows/deploy.yml
     with:
       azure_webapp_name: my-webapp-108
@@ -25,8 +25,8 @@ jobs:
 
 
   swap:
-    needs: deploy  # Ensure swap job runs only after deploy job succeeds
-    uses: ./.github/workflows/swap-slot.yml  # Path to the swap-slot.yml
+    needs: deploy 
+    uses: ./.github/workflows/swap-slot.yml 
     with:
       azure_webapp_name: my-webapp-108
       resource_group: my-rsg
