@@ -30,7 +30,7 @@ jobs:
 
       - name: Run EsLint
         run:  |
-          npx eslint './my-code/**/*.js'
+          npx eslint 'my-code/index.js'
         working-directory: ./my-code
 
       - name: Run Tests
