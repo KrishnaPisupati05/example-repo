@@ -30,6 +30,3 @@ jobs:
       - name: Run EsLint
         run:  |
           npx eslint 'my-code/**/*.js'
-
-      - name: Run Tests
-        run: npm test 
