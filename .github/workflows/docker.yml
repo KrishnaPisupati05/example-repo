@@ -9,7 +9,7 @@ on:
 
 jobs:
   validate:
-    uses: KrishnnaPisupati05/new-repo/.github/workflows/validate.yml@main
+    uses: KrishnaPisupati05/new-repo/.github/workflows/validate.yml@main
 
   docker-build-push.yaml:
     needs: validate
