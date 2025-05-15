@@ -16,6 +16,8 @@ jobs:
     uses: KrishnaPisupati05/new-repo/.github/workflows/validate.yml@main
 
   docker-build-push:
+    permissions:
+      read-all: true
     needs: validate
     uses: KrishnaPisupati05/docker-practice/.github/workflows/docker-build-push.yaml@main
     with:
