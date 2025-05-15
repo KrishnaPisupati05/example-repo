@@ -13,6 +13,8 @@ env:
 
 jobs:
   validate:
+    permissions:
+      read-all: true
     uses: KrishnaPisupati05/new-repo/.github/workflows/validate.yml@main
 
   docker-build-push:
