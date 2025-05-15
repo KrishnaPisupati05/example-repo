@@ -1,0 +1,17 @@
+name: DOcker Build and Push and Validate
+
+
+on:
+  push:
+    branches:
+      main
+
+
+jobs:
+  validate:
+    uses: KrishnnaPisupati05/new-repo/.github/workflows/validate.yml@main
+
+  docker-build-push.yaml:
+    needs: validate
+    uses: KrishnaPisupati05/docker-practice/.github/workflows/docker-build-push.yaml@main
+
