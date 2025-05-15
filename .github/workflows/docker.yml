@@ -1,11 +1,15 @@
-name: DOcker Build and Push and Validate
-
+name: Docker Build, Push, and Validate
 
 on:
   push:
     branches:
-      main
+      - main
 
+env:
+  registryServerName: ${{ secrets.REGISTRY_NAME }} 
+  imageName: krishna2527/sample-docker
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
 jobs:
   validate:
@@ -14,4 +18,11 @@ jobs:
   docker-build-push:
     needs: validate
     uses: KrishnaPisupati05/docker-practice/.github/workflows/docker-build-push.yaml@main
-
+    with:
+      # Pass inputs if required by the reusable workflow
+      registryServerName: ${{ env.registryServerName }}
+      imageName: ${{ env.imageName }}
+    secrets:
+      # Pass secrets if required by the reusable workflow
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
